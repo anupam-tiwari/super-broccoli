@@ -2,13 +2,37 @@ const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
+//const select = document.getElementById('room');
+
+// function rotateFunction(){
+//   var min = 1024;
+//   var max = 9999;
+//   var deg = Math.floor(Math.random() * (max - min)) + min;
+//   document.getElementById('box').style.transform = "rotate("+deg+"deg)";
+
+//   var element = document.getElementById('mainbox');
+//   element.classList.remove('animate');
+
+//   setTimeout(function(){
+//     element.classList.add('animate');
+//   }, 5000);
+// }
+
+
 
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
+//select.appendChild(1);
+
 const socket = io();
+
+// var opt = document.createElement('option');
+// opt.value = i;
+// opt.innerHTML = i;
+// select.appendChild(opt);
 
 // Join chatroom
 socket.emit('joinRoom', { username, room });
@@ -78,7 +102,18 @@ function outputUsers(users) {
     li.innerText = user.username;
     userList.appendChild(li);
   });
+
+  
 }
+
+document.getElementById('live-btn').addEventListener('click', () => {
+  const enterchat = confirm('You are now joining live dicussion with other users, we require your camera and mic to be on'); 
+  if(enterchat){
+    console.log('https://hackathons-x-rtc.herokuapp.com/' + room);
+    const link = 'https://hackathons-x-rtc.herokuapp.com/' + room; 
+    window.location = link; 
+  }
+});
 
 //Prompt the user before leave chat room
 document.getElementById('leave-btn').addEventListener('click', () => {
