@@ -1,5 +1,5 @@
 {
-  "name": "chatcord",
+  "name": "Campfire",
   "version": "1.0.0",
   "description": "Realtime chat app with rooms for museums",
   "main": "server.js",
