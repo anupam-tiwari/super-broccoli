@@ -123,3 +123,11 @@ document.getElementById('leave-btn').addEventListener('click', () => {
   } else {
   }
 });
+
+document.getElementById('visit').addEventListener('click', () => {
+  const leaveRoom = confirm('Are you excited to visit!!!');
+  if (leaveRoom) {
+    window.location = '../virtual.html';
+  } else {
+  }
+});
